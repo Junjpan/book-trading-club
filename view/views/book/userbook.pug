@@ -4,7 +4,7 @@ block content
         div(style="background-color:white ; box-shadow:5px 10px 8px black; margin:5% ;padding:2%")
             h5.text-capitalize 
                 img.mr-5(src="/image/"+user1.profileimage width="110px" height="110px" alt="image" ) 
-                b.text-dark #{books[0].username} &nbsp     
+                b.text-dark #{user1.username} &nbsp     
                 a.btn.btn-outline-primary.float-right.mr-5(role="button" href="/user/message/"+user1._id) Send User a Message 
                 a.btn.btn-primary.float-right.mr-5(role="button" href="/book/all/1") Return To Main Page   
             br
@@ -16,22 +16,23 @@ block content
                     b.text-dark STATE: 
                     |   &nbsp #{user1.state}
         div
-            each book , i in books
-                div.row.justify-content-center
-                    ul.list-group.col-md-8
-                        li.list-group-item
-                        div.d-flex.justify-content-between
-                            small Book Title: 
-                                u.font-weight-bold #{book.bookname}                        
-                            small Numbers of Request: 
-                                a(href="/book/requests/"+book._id)
-                                    b #{book.requests.length}
-                        li.list-group-item
-                            small.font-weight-bold 
-                                i.fa.fa-book &nbsp
-                                |Book Description: 
-                                p.lead #{book.description}
-                                i.fa.fa-tag &nbsp
-                                |Trade Status: #{book.tradestatus} 
-                hr.divider
-                br
+            if  (books.length>=1)
+                each book , i in books
+                    div.row.justify-content-center
+                        ul.list-group.col-md-8
+                            li.list-group-item
+                            div.d-flex.justify-content-between
+                                small Book Title: 
+                                    u.font-weight-bold #{book.bookname}                        
+                                small Numbers of Request: 
+                                    a(href="/book/requests/"+book._id)
+                                        b #{book.requests.length}
+                            li.list-group-item
+                                small.font-weight-bold 
+                                    i.fa.fa-book &nbsp
+                                    |Book Description: 
+                                    p.lead #{book.description}
+                                    i.fa.fa-tag &nbsp
+                                    |Trade Status: #{book.tradestatus} 
+                    hr.divider
+                    br

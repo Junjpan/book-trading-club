@@ -160,7 +160,9 @@ padding:10px;
 
 .item1{grid-area:img1;}
 .item2{grid-area:img2;}
-.item3{grid-area:img3;}
+.item3{grid-area:img3;
+      object-fit:cover;
+    max-height:100%;}
 
 .item5{grid-area:empty1;
     font-family: 'Satisfy', cursive;
