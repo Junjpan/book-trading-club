@@ -149,10 +149,8 @@ box-shadow:5px 10px 8px rgb(3, 50, 94)
     height:70px;
 }
 
-.fa-comments, .fa-envelope-o {
-    color:white;
-    font-size:20px;
-}
+
+
 
 .incomingrequest{
 margin-top:0px !important;
@@ -162,8 +160,7 @@ padding:10px;
 
 .item1{grid-area:img1;}
 .item2{grid-area:img2;}
-.item3{grid-area:img3;
-      display:grid;}
+.item3{grid-area:img3;}
 
 .item5{grid-area:empty1;
     font-family: 'Satisfy', cursive;
@@ -197,7 +194,7 @@ padding:10px;
 
 .member{
     z-index: 1;
-    margin:-35% 30% 35% auto;
+    margin:-35% 30% 35% 20%;
     padding:15px;
 }
 

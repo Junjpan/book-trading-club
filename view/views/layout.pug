@@ -42,13 +42,21 @@ html(lang="en")
                         input.form-control.ml-4(type='search', placeholder='Search', id="searchquery" aria-label='Search' value="")
                         btn#search.btn.btn-outline-info.my-2.ml-4.my-sm-2 Search Book
                 if user                    
-                    div.dropdown
+                    div.dropdown.mr-lg-5.mr-md-auto
                         a.nav-link.text-info.dropdown-toggle(type='button' data-toggle='dropdown' )    
                                 img(src="/image/"+user.profileimage width="40px" height="40px" alt="image" style="border-radius:50%")
                                 | &nbsp #{user.fullname}
                         .dropdown-menu
                             a.nav-link.dropdown-item.text-info(href='/user/logout') Logout
-                                         div.dropdown-divider                 
+                                         div.dropdown-divider  
+                            a.nav-link(href="/user/messages")
+                                i.fa.fa-envelope-o 
+                                    |User Messages &nbsp &nbsp 
+                                small.text-info #{user.threads.length}
+                            a.nav-link(href="/trade/system/"+user._id)
+                                i.fa.fa-comments 
+                                    |System Messages &nbsp &nbsp
+                                small.text-info #{user.systems.length}                             
                             a.nav-link.dropdown-item(href='/user/'+user._id) Profile                                   
                             a.nav-link.dropdown-item(href='/user/edit/' + user._id) Edit Profile                               
                             a.nav-link.dropdown-item(href='/book/add') My Books
@@ -58,14 +66,7 @@ html(lang="en")
                                 a.nav-link.dropdown-item(href="/request/myincoming/?status=Pending") Pending Requests                            
                                 a.nav-link.dropdown-item(href='/request/myincoming/?status=Accepted') Accepted Requests
                                 a.nav-link.dropdown-item(href='/request/myincoming/?status=Rejected') Rejected Requests                                                                               
-                    a.nav-link(href="/user/messages")
-                        h4
-                            i.fa.fa-envelope-o 
-                    small.text-info #{user.threads.length}
-                    a.nav-link(href="/trade/system/"+user._id)
-                        h4
-                            i.fa.fa-comments
-                    small.text-info.mr-auto #{user.systems.length} 
+
                 else    
                     a.nav-link.text-info(href='/user/login') Login   
                     a.nav-link.text-info.mr-auto(href='/user/newuser') Create an Account     
