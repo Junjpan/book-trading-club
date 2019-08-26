@@ -21,7 +21,7 @@ html(lang="en")
             #navbarSupportedContent.collapse.navbar-collapse
                                                
                 if user                    
-                    div.dropdown.mr-lg-5.mr-md-auto
+                    div.dropdown(style="width:170px;")
                         a.nav-link.text-info.dropdown-toggle(type='button' data-toggle='dropdown' )    
                                 img(src="/image/"+user.profileimage width="40px" height="40px" alt="image" style="border-radius:50%")
                                 | &nbsp #{user.fullname}
