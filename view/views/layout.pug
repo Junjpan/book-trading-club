@@ -19,28 +19,7 @@ html(lang="en")
             button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             #navbarSupportedContent.collapse.navbar-collapse
-                ul.navbar-nav
-                    if user
-                        li.nav-item
-                            a.nav-link.text-info(href='/user') Users
-                        li.nav-item
-                            a.nav-link.text-info(href='/trade/all') Trades
-                        li.nav-item.dropdown.active
-                            a#navbarDropdown.nav-link.dropdown-toggle.text-info(href='#', role='button', data-toggle='dropdown') Books
-                            .dropdown-menu(aria-labelledby='navbarDropdown')
-                                span.sr-only (current)
-                                a.dropdown-item(href='/book/all/1') All the Books
-                                a.dropdown-item(href='/book/add') Add a book                                  
-                        li.nav-item.dropdown
-                            a#navbarDropdown.nav-link.dropdown-toggle.text-info(href='#', role='button', data-toggle='dropdown') Requests
-                            .dropdown-menu(aria-labelledby='navbarDropdown')
-                                a.dropdown-item(href='/request/all') All Request
-                                a.dropdown-item(href='/request/newrequest/'+user._id) Create Request 
                                                
-                if user    
-                    form.form-inline.my-2.my-lg-0.mr-4
-                        input.form-control.ml-4(type='search', placeholder='Search', id="searchquery" aria-label='Search' value="")
-                        btn#search.btn.btn-outline-info.my-2.ml-4.my-sm-2 Search Book
                 if user                    
                     div.dropdown.mr-lg-5.mr-md-auto
                         a.nav-link.text-info.dropdown-toggle(type='button' data-toggle='dropdown' )    
@@ -66,10 +45,30 @@ html(lang="en")
                                 a.nav-link.dropdown-item(href="/request/myincoming/?status=Pending") Pending Requests                            
                                 a.nav-link.dropdown-item(href='/request/myincoming/?status=Accepted') Accepted Requests
                                 a.nav-link.dropdown-item(href='/request/myincoming/?status=Rejected') Rejected Requests                                                                               
-
-                else    
-                    a.nav-link.text-info(href='/user/login') Login   
-                    a.nav-link.text-info.mr-auto(href='/user/newuser') Create an Account     
+                ul.navbar-nav
+                    if user
+                        li.nav-item
+                            a.nav-link.text-info(href='/user') Users
+                        li.nav-item
+                            a.nav-link.text-info(href='/trade/all') Trades
+                        li.nav-item.dropdown.active
+                            a#navbarDropdown.nav-link.dropdown-toggle.text-info(href='#', role='button', data-toggle='dropdown') Books
+                            .dropdown-menu(aria-labelledby='navbarDropdown')
+                                span.sr-only (current)
+                                a.dropdown-item(href='/book/all/1') All the Books
+                                a.dropdown-item(href='/book/add') Add a book                                  
+                        li.nav-item.dropdown
+                            a#navbarDropdown.nav-link.dropdown-toggle.text-info(href='#', role='button', data-toggle='dropdown') Requests
+                            .dropdown-menu(aria-labelledby='navbarDropdown')
+                                a.dropdown-item(href='/request/all') All Request
+                                a.dropdown-item(href='/request/newrequest/'+user._id) Create Request 
+                    else    
+                        a.nav-link.text-info(href='/user/login') Login   
+                        a.nav-link.text-info.mr-auto(href='/user/newuser') Create an Account 
+                if user    
+                    form.form-inline.my-2.my-lg-0.mr-4
+                        input.form-control.ml-4(type='search', placeholder='Search', id="searchquery" aria-label='Search' value="")
+                        btn#search.btn.btn-outline-info.my-2.ml-4.my-sm-2 Search Book        
         div    
             h6.alertmessage
                 if error.length>0
