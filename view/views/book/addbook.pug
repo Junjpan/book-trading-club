@@ -1,0 +1,40 @@
+extend ../layout
+block content
+  .container
+    br
+    h4 #{subtitle}
+    form.message(method="POST",action="/book/add")
+        .form-group
+            label(for="bookname") BOOK TITLE:
+            input.form-control(type="text" id="bookname" name="bookname"  required)
+        .form-group
+            label(for="description") DESCRIPTION:
+            textarea.form-control(rows="5" id="description" name="description" placeholder="Author, Condition, About the book..." required)
+        hr.divider    
+        button.btn.btn-default(type="submit") ADD a BOOK TO EXCHANGE   
+    br
+    br
+    br
+    if user.books.length>0
+        h3.text-info #{user.fullname}'s Books 
+        hr.divider
+        br
+        br
+        each book, i in books
+            div
+                p Number: 
+                  b.text-dark #{i+1}
+                p List Date: #{book.requestdate}
+                p Book Title: 
+                  b.text-dark #{book.bookname}
+                p Book Description: 
+                  b.text-dark #{book.description}
+                a(href="/book/requests/"+book._id)
+                  p Request: #{book.requests.length}
+                p 
+                  |TradeStatus: 
+                  b.text-primary #{book.tradestatus}
+                  a.btn-primary.btn-md.edit-book(href="/book/edit/"+book._id role="button") Edit
+                  btn.btn-danger.btn-md.delete-book(id=book._id) Delete
+                    hr.divider
+                

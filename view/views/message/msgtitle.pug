@@ -1,0 +1,19 @@
+extend ../layout 
+block content
+    .container
+        br
+        table.table.table-striped
+            thead
+                tr
+                    th(scope="col") Date
+                    th(scope="col") Title
+                    th(socpe="col") Request ID 
+                each system , i in systems        
+                    tbody
+                        tr
+                            td #{system.date}
+                            td 
+                                a(href="/trade/system/details/"+system._id)
+                                    b #{system.title}
+                            td #{system.request} 
+                                   

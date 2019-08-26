@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(href="/image/logo.png" rel="icon")
+        link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" )
+        link(href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet")
+        link(rel="stylesheet" type="text/css" href="/css/style.css")
+        title Book Trading Club
+    body
+    div
+        nav.navbar.navbar-expand-lg.navbar-dark.sticky-top.bg-black
+            a.navbar-brand(href='/')
+                img(src='/image/logo.png' width="100" height="100")
+                b Book Trading Club
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarSupportedContent.collapse.navbar-collapse
+                ul.navbar-nav
+                    if user
+                        li.nav-item
+                            a.nav-link.text-info(href='/user') Users
+                        li.nav-item
+                            a.nav-link.text-info(href='/trade/all') Trades
+                        li.nav-item.dropdown.active
+                            a#navbarDropdown.nav-link.dropdown-toggle.text-info(href='#', role='button', data-toggle='dropdown') Books
+                            .dropdown-menu(aria-labelledby='navbarDropdown')
+                                span.sr-only (current)
+                                a.dropdown-item(href='/book/all/1') All the Books
+                                a.dropdown-item(href='/book/add') Add a book                                  
+                        li.nav-item.dropdown
+                            a#navbarDropdown.nav-link.dropdown-toggle.text-info(href='#', role='button', data-toggle='dropdown') Requests
+                            .dropdown-menu(aria-labelledby='navbarDropdown')
+                                a.dropdown-item(href='/request/all') All Request
+                                a.dropdown-item(href='/request/newrequest/'+user._id) Create Request 
+                                               
+                if user    
+                    form.form-inline.my-2.my-lg-0.mr-4
+                        input.form-control.ml-4(type='search', placeholder='Search', id="searchquery" aria-label='Search' value="")
+                        btn#search.btn.btn-outline-info.my-2.ml-4.my-sm-2 Search Book
+                if user                    
+                    div.dropdown
+                        a.nav-link.text-info.dropdown-toggle(type='button' data-toggle='dropdown' )    
+                                img(src="/image/"+user.profileimage width="40px" height="40px" alt="image" style="border-radius:50%")
+                                | &nbsp #{user.fullname}
+                        .dropdown-menu
+                            a.nav-link.dropdown-item.text-info(href='/user/logout') Logout
+                                         div.dropdown-divider                 
+                            a.nav-link.dropdown-item(href='/user/'+user._id) Profile                                   
+                            a.nav-link.dropdown-item(href='/user/edit/' + user._id) Edit Profile                               
+                            a.nav-link.dropdown-item(href='/book/add') My Books
+                            a.nav-link.dropdown-item(href="/request/myoutgoing") Outgoing Book Requests
+                            a.nav-link.text-info.dropdown-toggle(type="button" data-toggle="dropdown") Incoming Book Requests
+                            .dropdown-menu.incomingrequest    
+                                a.nav-link.dropdown-item(href="/request/myincoming/?status=Pending") Pending Requests                            
+                                a.nav-link.dropdown-item(href='/request/myincoming/?status=Accepted') Accepted Requests
+                                a.nav-link.dropdown-item(href='/request/myincoming/?status=Rejected') Rejected Requests                                                                               
+                    a.nav-link(href="/user/messages")
+                        h4
+                            i.fa.fa-envelope-o 
+                    small.text-info #{user.threads.length}
+                    a.nav-link(href="/trade/system/"+user._id)
+                        h4
+                            i.fa.fa-comments
+                    small.text-info.mr-auto #{user.systems.length} 
+                else    
+                    a.nav-link.text-info(href='/user/login') Login   
+                    a.nav-link.text-info.mr-auto(href='/user/newuser') Create an Account     
+        div    
+            h6.alertmessage
+                if error.length>0
+                    span.text-danger #{error}
+                if message.length>0      
+                    span.text-primary=message
+            h6        
+                if title            
+                    h2.display-6.text-center.title #{title}          
+            block content    
+        script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" )
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+        script(src='/js/main.js')
+        script(script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" )
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js")
+        
+    footer
+        div.footer Copyright &copy:2019 JB Book Trading Club,Image by <a href="https://pixabay.com/users/pixel2013-2364555/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2160539">pixel2013</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2160539">Pixabay</a>>Pixabay</a>

@@ -1,0 +1,22 @@
+extend ../layout 
+block content
+    .container
+        h6 Total #{books.length} books
+        each book , i in books
+            div.row.justify-content-center
+                ul.list-group.col-md-8
+                    li.list-group-item
+                    div.d-flex.justify-content-between
+                        small Book Title: 
+                            u.font-weight-bold #{book.bookname}                        
+                        small Username: 
+                            a.font-weight-bold.btn-link(href="/book/"+book.userid) #{book.username}
+                        small Numbers of Request: 
+                            a.font-wegith-bold.btn-link(href="/book/requests/"+book._id) #{book.requests.length}
+                    li.list-group-item
+                        small.font-weight-bold 
+                            i.fa.fa-book &nbsp
+                            |Book Description: 
+                            p.lead #{book.description}  
+            hr.divider
+            br

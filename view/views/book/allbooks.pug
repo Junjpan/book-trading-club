@@ -1,0 +1,37 @@
+extend ../layout 
+block content
+    .container
+        h6 Total #{count} books
+        h6.text-center
+            |Page #{currentpage} of #{pages} 
+        each book , i in books
+            div.row.justify-content-center
+                ul.list-group.col-md-8
+                    li.list-group-item
+                    div.d-flex.justify-content-between
+                        small Book Title: 
+                            u.font-weight-bold #{book.bookname}                        
+                        small Username: 
+                            a.font-weight-bold.btn-link(href="/book/"+book.userid) #{book.username}
+                        small Numbers of Request: 
+                            a.font-wegith-bold.btn-link(href="/book/requests/"+book._id) #{book.requests.length}
+                    li.list-group-item
+                        small.font-weight-bold 
+                            i.fa.fa-book &nbsp
+                            |Book Description: 
+                            p.lead #{book.description}  
+            hr.divider
+            br
+        h6.text-center
+            if (currentpage==1 && pages>1)
+                - var num=parseInt(currentpage)+1;
+                a(href="/book/all/"+num) Page #{num} &raquo; 
+            else if (currentpage <pages )    
+                - var num1=parseInt(currentpage)+1;
+                - var num2=parseInt(currentpage)-1
+                a(href="/book/all/"+num2) &laquo; Page #{num2} &nbsp &nbsp 
+                a(href="/book/all/"+num1) Page #{num1} &raquo;
+            else if (currentpage ==pages && pages>1)    
+                - var num=parseInt(currentpage)-1;
+                a(href="/book/all/"+num) &laquo; Page #{num} 
+               

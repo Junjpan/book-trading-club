@@ -1,0 +1,27 @@
+extend ../layout 
+block content
+    .container
+        div.trade_success.container
+            h4 Congratulations! You and #{request.requestusername} traded books successfully.
+            br
+            h6.text-info Here is the book request transaction ID: #{request._id} Please keep it for your record.
+            h6.text-danger Instructions: 
+            b #{request.requestusername} 
+            b 
+            |will send you the "
+            u #{request.pick}". 
+            br
+            p You will send 
+                b #{request.requestusername} &nbsp
+                b
+                u the "#{request.take}".
+            p  Your contact information has been sent to #{request.requestusername} for shipping purpose.You are expected to receive an email from #{request.requestusername} in the next 7 days. Please reach out to us at customer_service_jb@outlook.com if you don't .
+            p  Thanks again for using our JB Book Club Trading platform. Happy Trading!
+            hr
+            br
+            h6  Your dedicated JB Book Trading Club Team
+            a(href="/") Retrun to Home Page
+        br    
+
+
+

@@ -1,0 +1,32 @@
+extend ../layout 
+block content
+    form.message.form-inline.shorten
+                    input.form-control.ml-4(type='search', placeholder='Search full username', id="searchuser" aria-label='Search' value="" style="width:60%" title="You have to enter full username.")
+                    btn.search.btn.btn-outline-info.my-2.ml-3.my-sm-2
+                        i.fa.fa-search 
+                        | &nbsp Search User
+    br                   
+    .grid-container
+        each user, i in users
+            div.grid
+                .grid-item 
+                    img(src="/image/"+user.profileimage width="30px" height="30px" alt="image" style="border-radius:50%")
+                    a(href="/book/"+user._id) 
+                        b.text-info #{user.username} 
+                .grid-item    
+                    b State: 
+                    |#{user.state} &nbsp
+                    b City: 
+                    |#{user.city}
+                .grid-item
+                    i.fa.fa-book &nbsp
+                    b Books:&nbsp
+                    mark #{user.books.length+1}
+                .grid-item                        
+                    i.fa.fa-envelope-o &nbsp
+                    b 
+                        a(href="/user/message/"+user._id)   
+                            |Message    
+    br                  
+
+                    

@@ -1,0 +1,31 @@
+extend ../layout 
+block content
+    .container
+        br
+        h4 Upload Your Profile Picture
+        div(style="display:inline;")      
+            form.message(action="/upload/"+user._id method="POST" enctype="multipart/form-data" style="display:inline-block;float:left")
+                br
+                .input-group
+                    .input-group-prepend
+                        span#inputGroupFileAddon01.input-group-text Upload
+                    .custom-file
+                        input.custom-file-input(id="inputGroupFile01" type='file' name="profile" aria-describedby='inputGroupFileAddon01' required)
+                        label.custom-file-label(for='inputGroupFile01') Choose file
+                br
+                br
+                input.btn.btn-info.mr-4(type="submit" value="Submit")
+                a.btn.btn-primary(href="/user/"+user._id type="button" ) Return
+                br
+                hr.divider
+                p.text-danger **Image requirements: Size must be less than 1MB and contenttype of image must be JPEG OR PNG format. 
+            br
+            br
+            div(style="display:inline-block;margin-left:10%;background-color:black; padding:10px; width:250px; height:250px" )
+                if file    
+                    img(src="/image/"+file.filename width="230px" height="230px" alt="image")
+                else
+                    img(src="/image/profile.png" alt="Profile Picture"  width="230px" height="230px") 
+    br
+    br  
+    br         

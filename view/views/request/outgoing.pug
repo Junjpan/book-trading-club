@@ -1,0 +1,25 @@
+extend ../layout
+block content
+    .container
+        br
+        div.justify-content-around     
+            each request, i in requests
+                ul.list-group.col-md-10
+                    li.list-group-item.info
+                        small.text-success #{i+1}: &nbsp &nbsp
+                        small Request to: 
+                        a(href="/book/all/"+request.take_userid)
+                            |#{request.take_username}
+                        br
+                        small Offer Book:  #{request.pick} &nbsp &nbsp
+                        small.text-success Take Book: #{request.take}
+                        br
+                        small Request Date: #{request.requestdate} &nbsp
+                        br
+                        small Status: 
+                        em.text-primary #{request.status} &nbsp &nbsp
+                        button.btn-sm.text-danger.cancel.float-right(request_id=request._id) 
+                            em Cancel
+                            br
+                        hr
+        br                   

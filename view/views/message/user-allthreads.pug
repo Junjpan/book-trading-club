@@ -1,0 +1,25 @@
+extend ../layout  
+block content
+    .container
+        br
+        each thread , i in threads
+            div.row.justify-content-center
+            h6.font-weight-bold #{thread.title}
+                button.btn.btn-outline-danger.btn-sm.float-right.delete_thread(thread_id=thread._id, user_id=user._id) Delete    
+                ul.list-group.col-md-8
+                    li.list-group-item
+                    div.d-flex.justify-content-between
+                        small From: 
+                            u.font-weight-bold #{thread.username}                        
+                        small Date: 
+                            b #{thread.date}
+                        small Numbers of replies: 
+                            b #{thread.replies.length} &nbsp  
+                    li.list-group-item
+                        small.font-weight-bold 
+                            i.fa.fa-hand-o-right &nbsp
+                            |Message: 
+                            p #{thread.message}
+                        a(href="/user/reply/"+thread._id)
+                            small See replies         
+            br

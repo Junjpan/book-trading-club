@@ -1,0 +1,29 @@
+extend ../layout
+block content
+    form(method="POST",action="/user/newuser")
+        .form-group
+            label(for="username")|USERNAME:
+            input.form-control(type="text" id="username" name="username" required)
+        .form-group
+            label(for="fullname")|FULL NAME:
+            input.form-control(type="text" id="fullname" name="fullname" required)
+        .form-group
+            label(for="password")|PASSWORD:
+            input.form-control(type="password" id="password" name="password" title="Password must include minumum 1 Capital letter,1 Number and 1 puncutation mark. Minumun length of the password is not less than 8 letters" required)   
+        .form-group
+            label(for="email")|Email Address:
+            input.form-control(type="email" id="email" name="email" title="Please make sure enter valid email address to be able to receive update information from book club." required)
+        .form-group.row
+            .col
+                label(for="city")|CITY:
+                input.form-control(type="text" name="city" id="city" )
+            .col    
+                label(for="state")|STATE:
+                input.form-control(type="text" name="state" id="state" ) 
+        .form-group
+            label(for="address")|ADDRESS:
+            input.form-control(type="text" id="address" name="address")
+        br    
+        button.btn.btn-info(type="submit") APPLY    
+    br
+    br

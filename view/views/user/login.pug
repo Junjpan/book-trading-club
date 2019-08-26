@@ -1,0 +1,14 @@
+extend ../layout
+block content
+    .container
+        form(method="POST",action="/user/login")
+            .form-group
+                label(for="username")|USERNAME:
+                input.form-control(type="text" id="username" name="username" required)
+            .form-group
+                label(for="password")|PASSWORD:
+                input.form-control(type="password" id="password" name="password" title="Password must include minumum 1 Capital letter,1 Number and 1 puncutation mark. Minumun length of the password is not less than 8 letters" required)   
+            br    
+            button.btn.btn-info(type="submit") LOGIN   
+        br
+        br    

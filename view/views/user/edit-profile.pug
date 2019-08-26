@@ -1,0 +1,26 @@
+extend ../layout
+block content
+    form(method="POST",action="/user/edit/"+user.id)
+        .form-group
+            label(for="username")|USERNAME:
+            input.form-control(type="text" id="username" name="username" value=user.username required)
+        .form-group
+            label(for="fullname")|FULL NAME:
+            input.form-control(type="text" id="fullname" name="fullname" value=user.fullname required)
+        .form-group
+            label(for="email")|Email Address:
+            input.form-control(type="email" id="email" name="email" value=user.email required)        
+        .form-group.row
+            .col
+                label(for="city")|CITY:
+                input.form-control(type="text" name="city" id="city" value=user.city)
+            .col    
+                label(for="state")|STATE:
+                input.form-control(type="text" name="state" id="state" value=user.state ) 
+        .form-group
+            label(for="address")|ADDRESS:
+            input.form-control(type="text" id="address" name="address" value=user.address)
+        br    
+        button.btn.btn-info(type="submit") Save Changes   
+    br
+    br    

@@ -1,0 +1,51 @@
+extend ../layout
+block content
+    .container
+        br
+        each book , i in books
+            div.row.justify-content-center
+                ul.list-group.col-md-8
+                    li.list-group-item
+                    div.d-flex.justify-content-between
+                        small Book Title: 
+                            u.font-weight-bold #{book.bookname}                                                
+                        small Numbers of Request: 
+                            b #{book.requests.length}
+                    li.list-group-item
+                        small.font-weight-bold 
+                            i.fa.fa-book &nbsp
+                            |Book Description: 
+                            p.lead #{book.description}
+                        div.justify-content-around     
+                            each request, j in book.requests
+                                ul.list-group.col-md-8
+                                    li.list-group-item.info
+                                        lead #{j+1}:
+                                        if request.status==="Pending"
+                                            form.form-control.clear(method="POST",action="/request/myincoming/"+request._id)
+                                                div.form-check.form-check-inline.mr-4
+                                                input.form-check-input(type="radio" id="accept" name="status" value="Accepted")
+                                                label.form-check-label(for="accept")
+                                                    b Accept &nbsp
+                                                div.form-check.form-check-inline.mr-4
+                                                input.form-check-input(type="radio" id="reject" name="status" value="Rejected")
+                                                label.form-check-label(for="reject")
+                                                    b Reject &nbsp &nbsp
+                                                button.btn.btn-sm.btn-info.float-right(type="submit" ) Send  
+                                               
+                                        small Request From: 
+                                        a(href="/book/all/"+request.requestuserid)
+                                            |#{request.requestusername} 
+                                        br
+                                        small Offer Book:  #{request.pick} &nbsp
+                                        br
+                                        small Request Date: #{request.requestdate} &nbsp
+                                        br
+                                        small Note: #{request.note} &nbsp
+                                        br
+                                        small Status: 
+                                        u.text-info #{request.status} 
+                                        hr
+                                   
+            hr.divider
+            br

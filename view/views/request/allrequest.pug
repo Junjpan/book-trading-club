@@ -1,0 +1,22 @@
+extend ../layout
+block content
+    .grid-container
+        each request, i in requests
+            div.grid
+                .grid-item 
+                    i.fa.fa-thumb-tack &nbsp
+                    b #{i+1} &nbsp
+                    |Status: 
+                    wrap.bg-warning #{request.status}
+                .grid-item    
+                    em.text-capitalize #{request.requestusername}    
+                    | &nbsp wants to give the book:
+                    b &nbsp #{request.pick} &nbsp
+                    hr.divider                  
+                .grid-item
+                    | and wants to take the book: 
+                    b #{request.take} 
+                .grid-item
+                    | Request Date:
+                    b #{request.date}    
+    br            

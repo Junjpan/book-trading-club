@@ -1,0 +1,17 @@
+extend ../layout  
+block content        
+    .container    
+        table.table
+            thead.table-light
+                tr
+                    th(scope="col") #
+                    th(scope="col") Date
+                    th(scope="col") Party A &amp Offer Book
+                    th(socpe="col") Party B &amp Offer Book
+            each trade , i in trades            
+                tbody
+                    tr.bg-info
+                        td #{i+1}
+                        td #{trade.date}
+                        td #{trade.request.requestusername}__"#{trade.request.take}"
+                        td #{trade.request.take_username}__"#{trade.request.pick}"        

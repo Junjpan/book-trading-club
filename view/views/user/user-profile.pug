@@ -1,0 +1,33 @@
+extend ../layout
+block content
+    .container
+        .container.row
+            .display-4.row-ml-6
+                |Update Profile For 
+                b.text-info #{user.fullname}
+                br
+                br    
+                h5
+                    b.text-info USERNAME: 
+                    |   &nbsp #{user.username}        
+                h5
+                    b.text-info FUllNAME: 
+                    |   &nbsp #{user.fullname}
+                h5
+                    b.text-info EMAIL: 
+                    |   &nbsp #{user.email}    
+                h5
+                    b.text-info CITY: 
+                    |   &nbsp #{user.city}
+                h5
+                    b.text-info STATE: 
+                    |   &nbsp #{user.state}
+                h5    
+                    b.text-info ADDRESS: 
+                    |   &nbsp #{user.address} 
+                .row-ml-4
+                a.btn(type='button' href="/user/edit/"+user.id)  Edit Profile
+                a.btn.btn-primary.ml-3(type="button" href="/upload/") Upload Profile Picture
+                a.btn.btn-info.ml-3(type='button' href="/book/add")  My books
+                a.btn.btn-danger.ml-3(role='button' href="/user/edit/changepassword/"+user.id)  Change Password
+        br     

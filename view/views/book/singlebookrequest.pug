@@ -1,0 +1,30 @@
+extend ../layout 
+block content
+    .container
+        br
+        h3 Rquests For 
+            u.text-info #{book.bookname}
+        .grid-container
+            each request, i in requests
+                div.grid  
+                    .grid-item 
+                        i.fa.fa-thumb-tack &nbsp
+                        b #{i+1} &nbsp
+                        |Status: 
+                        wrap.bg-warning #{request.status}
+                    .grid-item    
+                        a(href="/user/message/"+request.requestuserid) 
+                            em.text-capitalize #{request.requestusername}    
+                        | &nbsp wants to give the book:
+                        b &nbsp #{request.pick} &nbsp
+                        hr.divider                  
+                    .grid-item
+                        | and wants to take the book: 
+                        b #{request.take} 
+                        |from 
+                        a(href="/user/message/"+book.userid)
+                            em.text-capitalize #{book.username}
+                    .grid-item        
+                        | Request Date: 
+                        b #{request.date} 
+            br                 

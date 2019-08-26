@@ -1,0 +1,34 @@
+extend ../layout 
+block content
+    .container
+        br
+        h4  
+            i.fa.fa-pencil &nbsp
+            |Send Message to 
+            small.lead #{username}
+        form.message(method="POST", action="/user/message/"+id)
+            .form-group.row
+            label.col-sm-3.col-form-label(for="user") Username:
+            input.col-sm-9(type="text" id="user" name="username" value=user.username readonly="")
+            .form-group.row
+            label.col-sm-3.col-form-label(for="title") Title:
+            input.col-sm-9(type="text" id="title" name="title" required)  
+            .form-group.row
+            label.col-sm-3.col-form-label(for="message") Message:
+            textarea.col-sm-9(rows="3" type="text" id="message" name="message" required)
+            hr.divider
+            button.btn.btn-info(type="submit") Send  
+        hr
+        each thread, i in threads
+            h5
+                i.fa.fa-comments &nbsp
+                b #{thread.title} 
+                    small from #{thread.username} 
+            p #{thread.message}
+            p #{thread.date}   
+            small Number of Relies: #{thread.replies.length} &nbsp
+                a(href="/user/reply/"+thread._id) Reply and Read more... 
+            hr    
+    br 
+
+    

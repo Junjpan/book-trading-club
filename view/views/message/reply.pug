@@ -1,0 +1,29 @@
+extend ../layout 
+block content
+    .container
+        br
+        h4  
+            i.fa.fa-comments &nbsp
+            b #{thread.title}    
+        p #{thread.message}
+            i.float-right  #{thread.username} &nbsp
+                i #{thread.date} 
+                hr.divider 
+        each reply, i in thread.replies
+            div.ml-5
+                h5
+                    i.fa.fa-comment &nbsp
+                    small from #{reply.username} on &nbsp #{reply.date}
+                p #{reply.message} 
+                hr.divider  
+        form.message(method="POST", action="/user/reply/"+thread._id)
+            .form-group.row
+            label.col-sm-3.col-form-label(for="user") Username:
+            input.col-sm-9(type="text" id="user" name="username" value=user.username readonly="")
+            .form-group.row
+            label.col-sm-3.col-form-label(for="message") Message:
+            textarea.col-sm-9(rows="3" type="text" id="message" name="message" required)
+            button.btn.btn-info.float-right(type="submit") Reply  
+
+    
+     

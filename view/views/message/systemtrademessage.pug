@@ -1,0 +1,47 @@
+extend ../layout 
+block content
+    .container
+        br
+        h5.text-info Congratulations! Your Trading request for the book - #{request.take} has been accepted
+        br
+        p Hello #{user.fullname},
+        p Congratulations! Your book request for the book "#{request.take}" has been accepted by #{request.take_username},The transaction ID# is #{request._id}. 
+        p Here are #{request.take_username}'s contact information. Please reach out to him/her through email within 7 days to schedule a shipment. If #{request.take_username} doesn't hear back from you within the required timeframe, he/she can have full right to cancel this transaction. 
+        hr                                           
+        u #{request.take_username}'s contact infomration:
+        br
+        b Username:
+        b 
+        | #{request.take_username}
+        br
+        b Full Name:
+        b 
+        |#{trade.fullname}
+        br
+        b Email:
+        b 
+        | #{trade.email}
+        br
+        b Address:
+        b 
+        |#{trade.address}
+        br
+        b City:
+        b 
+        |#{trade.city}
+        br
+        b State:
+        b 
+        |#{trade.state}
+        br
+        b Zipcode:
+        b 
+        |#{trade.zipcode}
+        br
+        b Message:
+        b 
+        |#{trade.message}
+        br
+        hr
+        p Have Questions? Feel free to reach out to us at customer_service_jb@outlook.com. Thanks again for using our JB Book Club Trading platform. Happy Trading!<br><br>
+        p The JB Book Trading Club ` 

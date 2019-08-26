@@ -1,0 +1,16 @@
+extend ../layout
+block content
+    .container
+        h4 Edit: 
+        h5 &nbsp &nbsp &nbsp Book of #{book.bookname}
+            form.message(method="POST", action="/book/edit/"+book._id)
+                p Book Title: 
+                input.form-control(value=book.bookname readonly)
+                br
+                p Book Description: 
+                textarea.form-control(rows="5" name="description") #{book.description}
+                hr    
+                button.btn.btn-primary.btn-md.mr-5(type="submit") Save
+            a.btn.btn-danger.btn-md.mr-20( role="button" href="/book/add") Cancel
+            
+                
