@@ -101,7 +101,7 @@ router.post("/newuser", (req, res) => {
 
     //make sure the password match the requirements
     if (!passwordRegex.test(password)) {
-        req.flash("error", "Please change different password, the password string must contain at least 1 lowercase letter, 1 uppercase letter,1 number and 1 specail character and must be 8 characters or longer")
+        req.flash("error", "Please change to a different password, the password string must contain at least 1 lowercase letter, 1 uppercase letter,1 number and 1 specail character and must be 8 characters or longer")
         return res.redirect('/user/newuser')//make sure use return to end the req.
     }
 
@@ -114,7 +114,7 @@ router.post("/newuser", (req, res) => {
         //console.log(db)
         if (db.length !== 0) {
             //console.log(db)
-            req.flash("error", "Please change different username,The username has been taken!")
+            req.flash("error", "Please change to a different username,The username has been taken!")
             return res.redirect('/user/newuser')
         } else {
             const newUser = new User();
@@ -146,7 +146,7 @@ router.get("/login", (req, res) => {
 router.post('/login', passport.authenticate('local', { failureRedirect: "/user/login", failureFlash: "Invalid username or password." }), (req, res) => {
     //once authenitcate is success. req.user was established and user.id will be stored in session under passport attribute and can be accessed whole website
     //console.log(req.user,req.isAuthenticated(),req.session);
-    req.flash("message", `${req.user.fullname} welcome back! You are logged in.`)
+    req.flash("message", `${req.user.fullname} Welcome back! You are logged in.`)
 
     res.redirect("/book/all/1")
 
